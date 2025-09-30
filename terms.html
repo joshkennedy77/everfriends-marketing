@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - EverFriends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            color: #7C3AED;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #7C3AED;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B5CF6;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #7C3AED;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 50%, #A855F7 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 80px;
+            padding: 60px 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+
+        .last-updated {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 1rem;
+        }
+
+        /* Content */
+        .content {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            line-height: 1.8;
+        }
+
+        .content h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .content p {
+            margin-bottom: 1rem;
+            color: #64748b;
+        }
+
+        .content ul {
+            margin: 1rem 0 1rem 2rem;
+            color: #64748b;
+        }
+
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #8B5CF6;
+            margin: 1.5rem 0;
+        }
+
+        .contact-info {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .content {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="EverFriends Logo" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-icon" style="display: none;">EF</div>
+                    <span>EverFriends</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="company.html">Company</a></li>
+                </ul>
+                <a href="/app/#/login" class="cta-button">Get Started!</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Terms & Conditions</h1>
+                <p class="page-subtitle">Please read these terms carefully</p>
+                <p class="last-updated">Last updated: January 2025</p>
+            </div>
+
+            <div class="content">
+                <div class="highlight">
+                    <p><strong>By using EverFriends, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our service.</strong></p>
+                </div>
+
+                <h2>1. Acceptance of Terms</h2>
+                <p>These Terms and Conditions ("Terms") govern your use of the EverFriends service, including our website, mobile application, and AI companion platform. By accessing or using our service, you agree to be bound by these Terms.</p>
+
+                <h2>2. Description of Service</h2>
+                <p>EverFriends provides an AI-powered digital companion service designed to offer companionship, conversation, and assistance to seniors and their families. Our service includes:</p>
+                <ul>
+                    <li>AI-powered conversation and companionship</li>
+                    <li>Reminder and notification services</li>
+                    <li>Emergency alert capabilities</li>
+                    <li>Caregiver dashboard and monitoring</li>
+                    <li>Health and wellness tracking</li>
+                </ul>
+
+                <h2>3. User Accounts and Registration</h2>
+                
+                <h3>Account Creation</h3>
+                <p>To use our service, you must create an account and provide accurate, complete information. You are responsible for maintaining the confidentiality of your account credentials.</p>
+
+                <h3>Account Responsibilities</h3>
+                <ul>
+                    <li>You must be at least 18 years old to create an account</li>
+                    <li>You are responsible for all activities under your account</li>
+                    <li>You must notify us immediately of any unauthorized use</li>
+                    <li>You may not share your account with others</li>
+                </ul>
+
+                <h2>4. Acceptable Use</h2>
+                
+                <h3>Permitted Uses</h3>
+                <p>You may use our service for:</p>
+                <ul>
+                    <li>Personal companionship and conversation</li>
+                    <li>Health and wellness monitoring</li>
+                    <li>Emergency assistance and alerts</li>
+                    <li>Family communication and updates</li>
+                </ul>
+
+                <h3>Prohibited Uses</h3>
+                <p>You may not use our service to:</p>
+                <ul>
+                    <li>Violate any laws or regulations</li>
+                    <li>Harass, abuse, or harm others</li>
+                    <li>Share inappropriate or offensive content</li>
+                    <li>Attempt to reverse engineer our technology</li>
+                    <li>Use the service for commercial purposes without permission</li>
+                    <li>Interfere with the proper functioning of the service</li>
+                </ul>
+
+                <h2>5. Privacy and Data Protection</h2>
+                <p>Your privacy is important to us. Our collection and use of personal information is governed by our Privacy Policy, which is incorporated into these Terms by reference. By using our service, you consent to the collection and use of information as described in our Privacy Policy.</p>
+
+                <h2>6. Payment Terms</h2>
+                
+                <h3>Subscription Fees</h3>
+                <p>Our service is available through various subscription plans. Fees are charged in advance and are non-refundable except as required by law.</p>
+
+                <h3>Billing</h3>
+                <ul>
+                    <li>Subscriptions automatically renew unless cancelled</li>
+                    <li>You may cancel your subscription at any time</li>
+                    <li>Refunds are provided only as required by law</li>
+                    <li>We may change our pricing with 30 days' notice</li>
+                </ul>
+
+                <h2>7. Intellectual Property</h2>
+                
+                <h3>Our Rights</h3>
+                <p>EverFriends and its content, including but not limited to text, graphics, logos, and software, are owned by us and protected by intellectual property laws.</p>
+
+                <h3>Your Rights</h3>
+                <p>You retain ownership of any content you provide to us, but grant us a license to use such content to provide our service.</p>
+
+                <h2>8. Disclaimers and Limitations</h2>
+                
+                <h3>Service Availability</h3>
+                <p>We strive to provide reliable service, but we cannot guarantee uninterrupted access. Our service is provided "as is" without warranties of any kind.</p>
+
+                <h3>Medical Disclaimer</h3>
+                <p><strong>EverFriends is not a medical device or healthcare provider. Our service is not intended to diagnose, treat, cure, or prevent any medical condition. Always consult with qualified healthcare professionals for medical advice.</strong></p>
+
+                <h3>Limitation of Liability</h3>
+                <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of our service.</p>
+
+                <h2>9. Emergency Situations</h2>
+                <p>While our service includes emergency alert features, it is not a substitute for professional emergency services. In case of a medical emergency, always contact 911 or your local emergency services immediately.</p>
+
+                <h2>10. Termination</h2>
+                
+                <h3>By You</h3>
+                <p>You may terminate your account at any time by contacting us or using the account deletion feature in our service.</p>
+
+                <h3>By Us</h3>
+                <p>We may suspend or terminate your account if you violate these Terms or for other reasons at our discretion, with or without notice.</p>
+
+                <h2>11. Changes to Terms</h2>
+                <p>We may modify these Terms at any time. We will notify you of material changes by posting the updated Terms on our website. Your continued use of the service constitutes acceptance of the modified Terms.</p>
+
+                <h2>12. Governing Law</h2>
+                <p>These Terms are governed by the laws of [State/Country] without regard to conflict of law principles. Any disputes will be resolved in the courts of [Jurisdiction].</p>
+
+                <h2>13. Severability</h2>
+                <p>If any provision of these Terms is found to be unenforceable, the remaining provisions will remain in full force and effect.</p>
+
+                <h2>14. Entire Agreement</h2>
+                <p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and EverFriends regarding the use of our service.</p>
+
+                <div class="contact-info">
+                    <h3>Contact Us</h3>
+                    <p>If you have any questions about these Terms and Conditions, please contact us:</p>
+                    <ul>
+                        <li>Email: legal@everfriends.ai</li>
+                        <li>Phone: 1-616-816-4944</li>
+                        <li>Address: EverFriends Legal Team, [Address]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Don't let your loved one ever feel alone again, let EverFriends bring joy to their lives. Connecting with care: EverFriends brings warmth and companionship every time you need it.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="media.html">Media</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="company.html">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>hello@everfriends.ai</li>
+                        <li>1-616-816-4944</li>
+                        <li>Location</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2024-2025 EverFriends.ai. All rights reserved.</p>
+                <p><a href="privacy.html" style="color: #94a3b8;">Privacy</a> | <a href="terms.html" style="color: #94a3b8;">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

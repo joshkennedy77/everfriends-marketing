@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - EverFriends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            color: #7C3AED;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #7C3AED;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B5CF6;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #7C3AED;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 50%, #A855F7 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 80px;
+            padding: 60px 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+
+        /* Blog Categories */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .category-tag:hover,
+        .category-tag.active {
+            background: #8B5CF6;
+            color: white;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #8B5CF6, #A855F7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-category {
+            color: #8B5CF6;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .blog-excerpt {
+            color: #64748b;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: #8B5CF6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .read-more:hover {
+            color: #A855F7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 50%, #A855F7 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button-primary {
+            background: white;
+            color: #8B5CF6;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-button-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            color: white;
+            padding: 16px 32px;
+            border: 2px solid white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button-secondary:hover {
+            background: white;
+            color: #8B5CF6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button-primary,
+            .cta-button-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index-local.html" class="logo">
+                    <img src="logo.png" alt="EverFriends Logo" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-icon" style="display: none;">EF</div>
+                    <span>EverFriends</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index-local.html#pricing">Pricing</a></li>
+                    <li><a href="blog-local.html">Blog</a></li>
+                    <li><a href="media-local.html">Media</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="company.html">Company</a></li>
+                </ul>
+                <a href="http://localhost:3000/#/login" class="cta-button">Get Started!</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Blog</h1>
+                <p class="page-subtitle">Blogs and News</p>
+                <p>Blog for caregivers providing assistance and support to seniors and parents with dementia and loneliness.</p>
+            </div>
+
+            <!-- Categories -->
+            <div class="categories">
+                <a href="#" class="category-tag active">All</a>
+                <a href="#" class="category-tag">Caregiving</a>
+                <a href="#" class="category-tag">Companionship</a>
+                <a href="#" class="category-tag">Dementia</a>
+                <a href="#" class="category-tag">Loneliness</a>
+                <a href="#" class="category-tag">Health</a>
+                <a href="#" class="category-tag">Nutrition</a>
+                <a href="#" class="category-tag">Travel</a>
+            </div>
+
+            <!-- Blog Posts -->
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">🤖</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Digital Care Companion</div>
+                        <h3 class="blog-title">Digital Care Companion – Why Yours Isn't Working (And What Actually Does)</h3>
+                        <p class="blog-excerpt">You bought the device. You set it up with hope in your heart and desperation in your gut. Maybe it was ElliQ, maybe it was another "revolutionary" digital care companion that promised to solve your parent's loneliness and your crushing...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">💔</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Companionship</div>
+                        <h3 class="blog-title">Companionship for a Lonely Parent: When You're Drowning in Guilt and Exhaustion</h3>
+                        <p class="blog-excerpt">It's 3 AM and you're lying awake again, consumed by guilt. Your mom called six times yesterday, and by the fourth call, you felt yourself getting irritated. You hate that you felt annoyed with her – she's lonely, she's scared...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🧠</div>
+                    <div class="blog-content">
+                        <div class="blog-category">AI Elder Care</div>
+                        <h3 class="blog-title">AI Elder Care: The Reality Behind the Promise (And Why It Might Actually Help This Time)</h3>
+                        <p class="blog-excerpt">You've seen the headlines. "AI Revolutionizes Elder Care!" "Robots Replace Caregivers!" "The Future of Aging is Here!" And if you're like most adult children desperately trying to care for aging parents, you've probably rolled your eyes and kept scrolling...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">👥</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Digital Companions</div>
+                        <h3 class="blog-title">Digital Companions: New Book Explores the Rise of Emotionally Aware AI</h3>
+                        <p class="blog-excerpt">Digital companions are redefining how we connect with technology. At the forefront of this shift is Daniel Hungerford, founder of EverFriends and author of Soulware 2.0: Designing Digital Beings That Heal, Teach, and Connect...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🎤</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Voice AI</div>
+                        <h3 class="blog-title">How voice AI can slash healthcare clinicians' workloads — and offer companionship for older adults</h3>
+                        <p class="blog-excerpt">Voice assistants are becoming a bigger part of our daily lives. Hype from frontier labs like OpenAI has sparked debate about whether talking chatbots might actually be a substitute for real human connections...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">📺</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Media</div>
+                        <h3 class="blog-title">How Digital Companions Are Transforming Elder Care with EverFriends AI</h3>
+                        <p class="blog-excerpt">EverFriends is a mobile app that harnesses the power of advanced artificial intelligence to create compassionate, digital companions that enhance the quality of life, foster emotional well-being, and promote daily independence—especially among older adults...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🏠</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Senior Living</div>
+                        <h3 class="blog-title">Senior Living Innovations: Embrace Comfort & Independence</h3>
+                        <p class="blog-excerpt">Introduction Senior Living is evolving rapidly. In this post, we'll preview how AI, smart design, and personalized care are transforming the way older adults live—boosting safety, wellness, and joy...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🏡</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Aging in Place</div>
+                        <h3 class="blog-title">Aging in Place: Helping Your Parents Stay Home Safely</h3>
+                        <p class="blog-excerpt">Why "Aging in Place" Matters More Than Ever Imagine waking up every day in the home you've built over a lifetime. The same kitchen where family meals were shared. The garden where grandchildren played...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🥪</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Sandwich Generation</div>
+                        <h3 class="blog-title">The Sandwich Generation: Career, Kids, and Aging Parents</h3>
+                        <p class="blog-excerpt">Understanding the Sandwich Generation The Sandwich Generation refers to adults—often in their 40s and 50s—who care for both their children and aging parents. First named by social worker Dorothy Miller in 1981...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">👴</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Aging Seniors</div>
+                        <h3 class="blog-title">Aging Seniors: Overcoming the Silent Struggle</h3>
+                        <p class="blog-excerpt">As medical breakthroughs extend our years, aging seniors often face a hidden epidemic of loneliness, depression, and anxiety. This post explores the emotional challenges older adults endure, backed by research and expert insight...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🤖</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Elder Care</div>
+                        <h3 class="blog-title">Elder Care: How AI is Revolutionizing the Future of Personalized Support</h3>
+                        <p class="blog-excerpt">As the global population ages, elder care faces unprecedented demands. Imagine seniors never feeling alone, receiving 24/7 personalized support that adapts as their needs change. Thanks to artificial intelligence (AI), this vision is becoming reality...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">✈️</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Travel</div>
+                        <h3 class="blog-title">Golden Years, Golden Memories: The 5 Best Vacation Spots for Seniors Over 65</h3>
+                        <p class="blog-excerpt">Congratulations on reaching your Golden Years! You've earned the freedom to explore without rush. Below are five destinations offering culture, comfort, and accessibility—each perfect for travelers over 65 seeking safe, unforgettable experiences...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>You Can't Do It All...</h2>
+            <p>Whether you're caring for a parent, managing a team of staff, or trying to give residents more connection without adding more to your plate… <strong>EverFriends</strong> is your invisible helping hand.</p>
+            <p><strong>It remembers. It responds. It connects.</strong></p>
+            
+            <div class="cta-buttons">
+                <a href="http://localhost:3000" class="cta-button-primary">Try Avatar Now</a>
+                <a href="http://localhost:3000/#/login" class="cta-button-secondary">Start Your Free Trial</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Don't let your loved one ever feel alone again, let EverFriends bring joy to their lives. Connecting with care: EverFriends brings warmth and companionship every time you need it.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index-local.html#pricing">Pricing</a></li>
+                        <li><a href="blog-local.html">Blog</a></li>
+                        <li><a href="media-local.html">Media</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="company.html">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>hello@everfriends.ai</li>
+                        <li>1-616-816-4944</li>
+                        <li>Location</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2024-2025 EverFriends.ai. All rights reserved.</p>
+                <p><a href="privacy.html" style="color: #94a3b8;">Privacy</a> | <a href="terms.html" style="color: #94a3b8;">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

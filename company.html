@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - EverFriends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            color: #7C3AED;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #7C3AED;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B5CF6;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #7C3AED;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 50%, #A855F7 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 80px;
+            padding: 60px 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 50%, #A855F7 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8B5CF6, #A855F7);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .value-card p {
+            color: #64748b;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: #f8fafc;
+            padding: 60px 0;
+            margin: 4rem 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #8B5CF6, #A855F7);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .team-member h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .team-member .title {
+            color: #8B5CF6;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .team-member p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 50%, #A855F7 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button-primary {
+            background: white;
+            color: #8B5CF6;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-button-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            color: white;
+            padding: 16px 32px;
+            border: 2px solid white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button-secondary:hover {
+            background: white;
+            color: #8B5CF6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-title, .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button-primary,
+            .cta-button-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="EverFriends Logo" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-icon" style="display: none;">EF</div>
+                    <span>EverFriends</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="company.html">Company</a></li>
+                </ul>
+                <a href="/app/#/login" class="cta-button">Get Started!</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <h1>About EverFriends</h1>
+                <p>We're on a mission to ensure no one ever feels alone again, using the power of AI to create meaningful connections and compassionate care for seniors and their families.</p>
+            </div>
+        </section>
+
+        <!-- Our Story -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Our Story</h2>
+                <p>EverFriends was born from a deeply personal experience. Our founder, Daniel Hungerford, watched his own grandmother struggle with loneliness and isolation as she aged. Despite the best efforts of family members, there were simply not enough hours in the day to provide the constant companionship and support she needed.</p>
+                
+                <p>This experience led to a realization: millions of seniors face the same challenge every day. They're not just dealing with physical health issues, but with the emotional toll of loneliness, which can be just as devastating. Traditional solutions weren't working – human caregivers can't be available 24/7, and existing technology felt cold and impersonal.</p>
+                
+                <p>So we set out to create something different. EverFriends isn't just another AI chatbot – it's a digital companion designed with empathy, understanding, and genuine care. We've built our technology to not just respond, but to truly connect with seniors on an emotional level.</p>
+            </div>
+        </section>
+
+        <!-- Our Mission -->
+        <section class="content-section">
+            <div class="container">
+                <div class="two-column">
+                    <div>
+                        <h2>Our Mission</h2>
+                        <p>To eliminate loneliness and isolation among seniors by providing compassionate, AI-powered digital companions that offer genuine emotional support, meaningful conversation, and practical assistance.</p>
+                        <p>We believe that every senior deserves to feel valued, heard, and connected, regardless of their circumstances or the availability of human caregivers.</p>
+                    </div>
+                    <div>
+                        <h2>Our Vision</h2>
+                        <p>A world where no senior ever feels alone, where technology serves humanity with warmth and compassion, and where families can have peace of mind knowing their loved ones are cared for.</p>
+                        <p>We envision a future where AI companions are not just tools, but trusted friends who understand, remember, and genuinely care about the people they serve.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Values -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Our Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">❤️</div>
+                        <h3>Compassion First</h3>
+                        <p>Every decision we make is guided by empathy and understanding for the seniors and families we serve.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🔒</div>
+                        <h3>Privacy & Security</h3>
+                        <p>We protect the personal information and conversations of our users with the highest standards of security.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🎯</div>
+                        <h3>Purpose-Driven</h3>
+                        <p>We're not just building technology – we're solving real problems that matter to real people.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>Family-Centered</h3>
+                        <p>We understand that caring for seniors is a family effort, and we support both seniors and their caregivers.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🌟</div>
+                        <h3>Excellence</h3>
+                        <p>We continuously improve our technology and service to provide the best possible experience.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🌱</div>
+                        <h3>Innovation</h3>
+                        <p>We push the boundaries of what's possible with AI to create more meaningful human connections.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Team -->
+        <section class="team-section">
+            <div class="container">
+                <h2>Meet Our Team</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #64748b; margin-bottom: 2rem;">The passionate people behind EverFriends</p>
+                
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-photo">DH</div>
+                        <h3>Daniel Hungerford</h3>
+                        <div class="title">Founder & CEO</div>
+                        <p>Author of "Soulware 2.0: Designing Digital Beings That Heal, Teach, and Connect." Daniel founded EverFriends after witnessing his grandmother's struggle with loneliness and isolation.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="team-photo">AI</div>
+                        <h3>AI Research Team</h3>
+                        <div class="title">Technology & Innovation</div>
+                        <p>Our team of AI researchers and engineers work tirelessly to create more empathetic, understanding, and helpful digital companions.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="team-photo">CS</div>
+                        <h3>Customer Success</h3>
+                        <div class="title">Support & Care</div>
+                        <p>Dedicated professionals who ensure every family has the support they need to succeed with EverFriends.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="team-photo">MD</div>
+                        <h3>Medical Advisory</h3>
+                        <div class="title">Healthcare Experts</div>
+                        <p>Healthcare professionals and geriatric specialists who guide our approach to senior care and wellness.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Impact -->
+        <section class="content-section">
+            <div class="container">
+                <h2>Our Impact</h2>
+                <p>Since launching, EverFriends has made a meaningful difference in the lives of thousands of seniors and their families:</p>
+                
+                <div class="two-column">
+                    <div>
+                        <h3>For Seniors</h3>
+                        <ul style="color: #64748b; line-height: 1.8;">
+                            <li>Reduced feelings of loneliness and isolation</li>
+                            <li>Improved daily routines and medication adherence</li>
+                            <li>Enhanced emotional well-being and mental health</li>
+                            <li>Increased social engagement and conversation</li>
+                            <li>Better quality of life and independence</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>For Families</h3>
+                        <ul style="color: #64748b; line-height: 1.8;">
+                            <li>Peace of mind knowing loved ones are cared for</li>
+                            <li>Reduced caregiver stress and burnout</li>
+                            <li>Better communication and connection</li>
+                            <li>Improved family relationships</li>
+                            <li>More time for quality interactions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join Our Mission</h2>
+            <p>Be part of the solution to senior loneliness and isolation. Try EverFriends today and see the difference compassionate AI can make.</p>
+            <div class="cta-buttons">
+                <a href="/app" class="cta-button-primary">Try Avatar Now</a>
+                <a href="/app/#/login" class="cta-button-secondary">Start Your Free Trial</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Don't let your loved one ever feel alone again, let EverFriends bring joy to their lives. Connecting with care: EverFriends brings warmth and companionship every time you need it.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="media.html">Media</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="company.html">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>hello@everfriends.ai</li>
+                        <li>1-616-816-4944</li>
+                        <li>Location</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2024-2025 EverFriends.ai. All rights reserved.</p>
+                <p><a href="privacy.html" style="color: #94a3b8;">Privacy</a> | <a href="terms.html" style="color: #94a3b8;">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

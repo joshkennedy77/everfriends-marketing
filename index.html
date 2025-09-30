@@ -296,6 +296,9 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             text-align: center;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .pricing-card.featured {
@@ -325,6 +328,7 @@
         .pricing-features {
             list-style: none;
             margin: 2rem 0;
+            flex-grow: 1;
         }
 
         .pricing-features li {
@@ -349,6 +353,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: transform 0.3s;
+            margin-top: auto;
         }
 
         .pricing-button:hover {
@@ -445,64 +450,6 @@
             color: #8B5CF6;
         }
 
-        /* Blog Section */
-        .blog-section {
-            padding: 80px 0;
-            background: #f8fafc;
-        }
-
-        .blog-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 3rem;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .blog-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .blog-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 1rem;
-        }
-
-        .blog-card p {
-            color: #64748b;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .read-more {
-            color: #7C3AED;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .read-more:hover {
-            color: #5B21B6;
-        }
-
         /* Footer */
         .footer {
             background: #1e293b;
@@ -588,10 +535,10 @@
                 </a>
                 <ul class="nav-links">
                     <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="/media">Media</a></li>
-                    <li><a href="#support">Support</a></li>
-                    <li><a href="#company">Company</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="company.html">Company</a></li>
                 </ul>
                 <a href="javascript:void(0)" onclick="goToLogin()" class="cta-button">Get Started!</a>
             </nav>
@@ -787,37 +734,12 @@
     <section class="cta-section">
         <div class="container">
             <h2>You Can't Do It All...</h2>
-            <p>Download the App and Start Feeling Supported</p>
             <p>Whether you're caring for a parent, managing a team of staff, or trying to give residents more connection without adding more to your plate… <strong>EverFriends</strong> is your invisible helping hand.</p>
             <p><strong>It remembers. It responds. It connects.</strong></p>
             
             <div class="cta-buttons">
                 <a href="javascript:void(0)" onclick="goToLogin()" class="cta-button-primary">Try Avatar Now</a>
                 <a href="javascript:void(0)" onclick="goToLogin()" class="cta-button-secondary">Start Your Free Trial</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section id="blog" class="blog-section">
-        <div class="container">
-            <h2>Latest from Our Blog</h2>
-            <div class="blog-grid">
-                <article class="blog-card">
-                    <h3>AI Elder Care: The Reality of Digital Companionship</h3>
-                    <p>Discover how AI avatars are transforming elder care and providing meaningful companionship for seniors.</p>
-                    <a href="#" class="read-more">Read More</a>
-                </article>
-                <article class="blog-card">
-                    <h3>Companionship for Lonely Parents</h3>
-                    <p>Learn about the importance of social connection for aging parents and how technology can help.</p>
-                    <a href="#" class="read-more">Read More</a>
-                </article>
-                <article class="blog-card">
-                    <h3>Digital Care Companion Technology</h3>
-                    <p>Explore the latest innovations in digital care companions and their impact on quality of life.</p>
-                    <a href="#" class="read-more">Read More</a>
-                </article>
             </div>
         </div>
     </section>
@@ -835,9 +757,9 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="media.html">Media</a></li>
-                        <li><a href="#support">Support</a></li>
+                        <li><a href="support.html">Support</a></li>
                     </ul>
                 </div>
                 
@@ -853,7 +775,7 @@
             
             <div class="footer-bottom">
                 <p>Copyright © 2024-2025 EverFriends.ai. All rights reserved.</p>
-                <p><a href="#privacy" style="color: #94a3b8;">Privacy</a> | <a href="#terms" style="color: #94a3b8;">Terms & Conditions</a></p>
+                <p><a href="privacy.html" style="color: #94a3b8;">Privacy</a> | <a href="terms.html" style="color: #94a3b8;">Terms & Conditions</a></p>
             </div>
         </div>
     </footer>
@@ -861,11 +783,11 @@
         // Function to handle login navigation for both local and production
         function goToLogin() {
             if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                // For local development, navigate to production Vercel app
-                window.location.href = 'https://everfriends-flutter.vercel.app/app/';
+                // For local development, serve Flutter app directly
+                window.location.href = 'http://localhost:3000/login';
             } else {
                 // For production, Vercel routes /app/ to Flutter app
-                window.location.href = '/app/';
+                window.location.href = '/app/login';
             }
         }
     </script>

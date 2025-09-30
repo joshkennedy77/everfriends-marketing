@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - EverFriends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            color: #7C3AED;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #7C3AED;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B5CF6;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #7C3AED;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 50%, #A855F7 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 80px;
+            padding: 60px 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+
+        .last-updated {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 1rem;
+        }
+
+        /* Content */
+        .content {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            line-height: 1.8;
+        }
+
+        .content h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .content p {
+            margin-bottom: 1rem;
+            color: #64748b;
+        }
+
+        .content ul {
+            margin: 1rem 0 1rem 2rem;
+            color: #64748b;
+        }
+
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #8B5CF6;
+            margin: 1.5rem 0;
+        }
+
+        .contact-info {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .content {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="EverFriends Logo" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-icon" style="display: none;">EF</div>
+                    <span>EverFriends</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="company.html">Company</a></li>
+                </ul>
+                <a href="/app/#/login" class="cta-button">Get Started!</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Privacy Policy</h1>
+                <p class="page-subtitle">Your privacy is our priority</p>
+                <p class="last-updated">Last updated: January 2025</p>
+            </div>
+
+            <div class="content">
+                <div class="highlight">
+                    <p><strong>At EverFriends, we understand that privacy is especially important when dealing with sensitive health and personal information. We are committed to protecting your privacy and the privacy of your loved ones.</strong></p>
+                </div>
+
+                <h2>1. Information We Collect</h2>
+                
+                <h3>Personal Information</h3>
+                <p>We collect information you provide directly to us, such as:</p>
+                <ul>
+                    <li>Name, email address, and phone number</li>
+                    <li>Account information and preferences</li>
+                    <li>Profile information about the senior using our service</li>
+                    <li>Emergency contact information</li>
+                    <li>Payment information (processed securely through third-party providers)</li>
+                </ul>
+
+                <h3>Conversation Data</h3>
+                <p>To provide our AI companion service, we collect:</p>
+                <ul>
+                    <li>Conversation transcripts between users and our AI</li>
+                    <li>Voice recordings (if voice features are used)</li>
+                    <li>Interaction patterns and preferences</li>
+                    <li>Health and wellness information shared during conversations</li>
+                </ul>
+
+                <h3>Technical Information</h3>
+                <p>We automatically collect certain technical information:</p>
+                <ul>
+                    <li>Device information and operating system</li>
+                    <li>App usage data and performance metrics</li>
+                    <li>IP address and location data (general area only)</li>
+                    <li>Log files and error reports</li>
+                </ul>
+
+                <h2>2. How We Use Your Information</h2>
+                
+                <p>We use the information we collect to:</p>
+                <ul>
+                    <li>Provide and improve our AI companion service</li>
+                    <li>Personalize conversations and recommendations</li>
+                    <li>Send important service updates and notifications</li>
+                    <li>Process payments and manage your account</li>
+                    <li>Provide customer support</li>
+                    <li>Ensure the safety and security of our service</li>
+                    <li>Comply with legal obligations</li>
+                </ul>
+
+                <h2>3. Information Sharing and Disclosure</h2>
+                
+                <p><strong>We do not sell, trade, or rent your personal information to third parties.</strong></p>
+                
+                <p>We may share your information only in the following limited circumstances:</p>
+                <ul>
+                    <li><strong>With your consent:</strong> When you explicitly authorize us to share information</li>
+                    <li><strong>Service providers:</strong> With trusted third parties who help us operate our service (under strict confidentiality agreements)</li>
+                    <li><strong>Emergency situations:</strong> When necessary to protect the health or safety of a user</li>
+                    <li><strong>Legal requirements:</strong> When required by law or to protect our rights</li>
+                    <li><strong>Business transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
+                </ul>
+
+                <h2>4. Data Security</h2>
+                
+                <p>We implement industry-standard security measures to protect your information:</p>
+                <ul>
+                    <li>End-to-end encryption for all conversations</li>
+                    <li>Secure data transmission using SSL/TLS</li>
+                    <li>Regular security audits and updates</li>
+                    <li>Access controls and authentication</li>
+                    <li>Secure data centers with physical security measures</li>
+                </ul>
+
+                <h2>5. Data Retention</h2>
+                
+                <p>We retain your information for as long as necessary to provide our services and comply with legal obligations:</p>
+                <ul>
+                    <li>Account information: Until you delete your account</li>
+                    <li>Conversation data: Up to 7 years for service improvement and legal compliance</li>
+                    <li>Technical logs: Up to 2 years for security and debugging purposes</li>
+                </ul>
+
+                <h2>6. Your Rights and Choices</h2>
+                
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Access your personal information</li>
+                    <li>Correct inaccurate information</li>
+                    <li>Delete your account and data</li>
+                    <li>Export your data</li>
+                    <li>Opt out of certain communications</li>
+                    <li>Withdraw consent for data processing</li>
+                </ul>
+
+                <h2>7. Health Information (HIPAA Compliance)</h2>
+                
+                <p>When we collect health-related information, we follow HIPAA guidelines:</p>
+                <ul>
+                    <li>We do not share health information without explicit consent</li>
+                    <li>Health data is encrypted and stored securely</li>
+                    <li>We maintain detailed access logs</li>
+                    <li>We provide breach notification as required by law</li>
+                </ul>
+
+                <h2>8. Children's Privacy</h2>
+                
+                <p>Our service is designed for adults and seniors. We do not knowingly collect information from children under 13. If we learn we have collected such information, we will delete it promptly.</p>
+
+                <h2>9. International Data Transfers</h2>
+                
+                <p>Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your information in accordance with this privacy policy.</p>
+
+                <h2>10. Changes to This Policy</h2>
+                
+                <p>We may update this privacy policy from time to time. We will notify you of any material changes by posting the new policy on our website and updating the "Last updated" date.</p>
+
+                <div class="contact-info">
+                    <h3>Contact Us</h3>
+                    <p>If you have any questions about this privacy policy or our data practices, please contact us:</p>
+                    <ul>
+                        <li>Email: privacy@everfriends.ai</li>
+                        <li>Phone: 1-616-816-4944</li>
+                        <li>Address: EverFriends Privacy Team, [Address]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Don't let your loved one ever feel alone again, let EverFriends bring joy to their lives. Connecting with care: EverFriends brings warmth and companionship every time you need it.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="media.html">Media</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="company.html">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>hello@everfriends.ai</li>
+                        <li>1-616-816-4944</li>
+                        <li>Location</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2024-2025 EverFriends.ai. All rights reserved.</p>
+                <p><a href="privacy.html" style="color: #94a3b8;">Privacy</a> | <a href="terms.html" style="color: #94a3b8;">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

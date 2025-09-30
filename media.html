@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media - EverFriends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            color: #7C3AED;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #7C3AED;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B5CF6;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #7C3AED;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 50%, #A855F7 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main {
+            margin-top: 80px;
+            padding: 60px 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+
+        /* Media Sections */
+        .media-section {
+            margin-bottom: 4rem;
+        }
+
+        .media-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .media-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .media-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .media-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #8B5CF6, #A855F7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .play-button {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B5CF6;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .media-content {
+            padding: 1.5rem;
+        }
+
+        .media-category {
+            color: #8B5CF6;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .media-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .media-description {
+            color: #64748b;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .media-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .media-link {
+            color: #8B5CF6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .media-link:hover {
+            color: #A855F7;
+        }
+
+        /* Press Section */
+        .press-section {
+            background: #f8fafc;
+            padding: 60px 0;
+            margin: 4rem 0;
+        }
+
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .press-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .press-logo {
+            height: 60px;
+            background: #e2e8f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .press-item h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .press-item p {
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .press-date {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        /* Resources Section */
+        .resources-section {
+            margin: 4rem 0;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8B5CF6, #A855F7);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .resource-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .resource-card p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-link {
+            color: #8B5CF6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .resource-link:hover {
+            color: #A855F7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 50%, #A855F7 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button-primary {
+            background: white;
+            color: #8B5CF6;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-button-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            color: white;
+            padding: 16px 32px;
+            border: 2px solid white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button-secondary:hover {
+            background: white;
+            color: #8B5CF6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .media-grid, .press-grid, .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button-primary,
+            .cta-button-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="EverFriends Logo" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-icon" style="display: none;">EF</div>
+                    <span>EverFriends</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="support.html">Support</a></li>
+                    <li><a href="company.html">Company</a></li>
+                </ul>
+                <a href="/app/#/login" class="cta-button">Get Started!</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Media Center</h1>
+                <p class="page-subtitle">Press coverage, videos, and resources about EverFriends</p>
+            </div>
+
+            <!-- Videos Section -->
+            <section class="media-section">
+                <h2>Videos & Demos</h2>
+                <div class="media-grid">
+                    <div class="media-card">
+                        <div class="media-thumbnail">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="media-content">
+                            <div class="media-category">Product Demo</div>
+                            <h3 class="media-title">EverFriends AI Companion Demo</h3>
+                            <p class="media-description">See how EverFriends provides compassionate companionship and support for seniors through natural conversation.</p>
+                            <div class="media-meta">
+                                <span>5:32</span>
+                                <a href="#" class="media-link">Watch Now →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <div class="media-thumbnail">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="media-content">
+                            <div class="media-category">Customer Story</div>
+                            <h3 class="media-title">Mary's Story: Finding Connection</h3>
+                            <p class="media-description">Hear from Mary, an 82-year-old user, about how EverFriends has transformed her daily life and reduced her loneliness.</p>
+                            <div class="media-meta">
+                                <span>3:45</span>
+                                <a href="#" class="media-link">Watch Now →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <div class="media-thumbnail">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="media-content">
+                            <div class="media-category">Caregiver Testimonial</div>
+                            <h3 class="media-title">Peace of Mind for Families</h3>
+                            <p class="media-description">Learn how EverFriends gives families peace of mind knowing their loved ones are cared for and connected.</p>
+                            <div class="media-meta">
+                                <span>4:12</span>
+                                <a href="#" class="media-link">Watch Now →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <div class="media-thumbnail">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <div class="media-content">
+                            <div class="media-category">Technology</div>
+                            <h3 class="media-title">The Science Behind EverFriends</h3>
+                            <p class="media-description">Explore the AI technology and research that powers EverFriends' empathetic and understanding conversations.</p>
+                            <div class="media-meta">
+                                <span>6:18</span>
+                                <a href="#" class="media-link">Watch Now →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Press Coverage -->
+            <section class="press-section">
+                <div class="container">
+                    <h2>Press Coverage</h2>
+                    <div class="press-grid">
+                        <div class="press-item">
+                            <div class="press-logo">TechCrunch</div>
+                            <h3>AI Companions for Seniors: The Future of Elder Care</h3>
+                            <p>EverFriends is revolutionizing how we approach senior care with AI-powered companionship...</p>
+                            <div class="press-date">January 15, 2025</div>
+                        </div>
+
+                        <div class="press-item">
+                            <div class="press-logo">Forbes</div>
+                            <h3>How Digital Companions Are Transforming Elder Care</h3>
+                            <p>Daniel Hungerford's EverFriends is leading the charge in compassionate AI technology...</p>
+                            <div class="press-date">January 10, 2025</div>
+                        </div>
+
+                        <div class="press-item">
+                            <div class="press-logo">AARP</div>
+                            <h3>Combatting Senior Loneliness with Technology</h3>
+                            <p>New AI companions like EverFriends are helping seniors stay connected and engaged...</p>
+                            <div class="press-date">January 8, 2025</div>
+                        </div>
+
+                        <div class="press-item">
+                            <div class="press-logo">Healthcare IT News</div>
+                            <h3>Voice AI Reduces Healthcare Workloads</h3>
+                            <p>EverFriends demonstrates how voice AI can support both seniors and healthcare providers...</p>
+                            <div class="press-date">January 5, 2025</div>
+                        </div>
+
+                        <div class="press-item">
+                            <div class="press-logo">Senior Living News</div>
+                            <h3>Innovation in Senior Living Technology</h3>
+                            <p>Facilities are adopting AI companions to enhance resident care and reduce isolation...</p>
+                            <div class="press-date">January 3, 2025</div>
+                        </div>
+
+                        <div class="press-item">
+                            <div class="press-logo">AI Weekly</div>
+                            <h3>The Rise of Emotionally Aware AI</h3>
+                            <p>EverFriends founder Daniel Hungerford discusses the future of compassionate AI in his new book...</p>
+                            <div class="press-date">December 28, 2024</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resources Section -->
+            <section class="resources-section">
+                <h2>Media Resources</h2>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">📸</div>
+                        <h3>Press Photos</h3>
+                        <p>High-resolution images of our team, product, and company for media use.</p>
+                        <a href="#" class="resource-link">Download →</a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">📄</div>
+                        <h3>Press Kit</h3>
+                        <p>Complete media kit with company information, bios, and key facts.</p>
+                        <a href="#" class="resource-link">Download →</a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">🎥</div>
+                        <h3>B-Roll Footage</h3>
+                        <p>Video footage of EverFriends in action for news and documentary use.</p>
+                        <a href="#" class="resource-link">Request Access →</a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">📊</div>
+                        <h3>Company Stats</h3>
+                        <p>Key statistics and data about our impact and user base.</p>
+                        <a href="#" class="resource-link">View Stats →</a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">👥</div>
+                        <h3>Expert Interviews</h3>
+                        <p>Schedule interviews with our team and healthcare experts.</p>
+                        <a href="#" class="resource-link">Request Interview →</a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">📱</div>
+                        <h3>Product Demos</h3>
+                        <p>Live demonstrations of EverFriends for media and partners.</p>
+                        <a href="#" class="resource-link">Schedule Demo →</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Experience EverFriends?</h2>
+            <p>Join thousands of families who have found peace of mind and connection through our AI companion.</p>
+            <div class="cta-buttons">
+                <a href="/app" class="cta-button-primary">Try Avatar Now</a>
+                <a href="/app/#/login" class="cta-button-secondary">Start Your Free Trial</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Don't let your loved one ever feel alone again, let EverFriends bring joy to their lives. Connecting with care: EverFriends brings warmth and companionship every time you need it.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="media.html">Media</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="company.html">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>hello@everfriends.ai</li>
+                        <li>1-616-816-4944</li>
+                        <li>Location</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2024-2025 EverFriends.ai. All rights reserved.</p>
+                <p><a href="privacy.html" style="color: #94a3b8;">Privacy</a> | <a href="terms.html" style="color: #94a3b8;">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
